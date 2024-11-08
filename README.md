@@ -1,1 +1,1 @@
-http server that load html page partially using erlang and cowboy
+http server that load html page partially it will send 30 characters to the client in 100ms instead of sending the full html page at once so he can see it loading partially and doesn't get bored and exit the page using erlang and cowboy
