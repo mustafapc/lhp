@@ -4,8 +4,8 @@
 -export([init/2, recurse/3, info/3]).
 
 init(Req, State) ->
-	Req2 = cowboy_req:stream_reply(200, #{<<"content-type">> => <<"text/html">>}, Req),
-	recurse("C:\\Users\\mustafa\\Desktop\\cowboy_load_html_partially\\hi.html", Req2, State),
+	Req2 = cowboy_req:stream_reply(200, #{<<"content-type">> => <<"text/plain">>}, Req),
+	recurse("hi.html", Req2, State),
 	{cowboy_loop, Req2, State}.
 
 info(eof, Req, State) ->

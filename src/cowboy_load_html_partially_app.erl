@@ -6,7 +6,7 @@
 
 start(_Type, _Args) ->
 	Dispatch = cowboy_router:compile([
-		{"_", [{"/hi", main_handler, []}]}
+		{'_', [{"/hi", main_handler, []}]}
 		]),
 
 	{ok, _A} = cowboy:start_clear(my_http_listner,
