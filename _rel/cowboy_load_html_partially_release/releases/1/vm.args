@@ -1,0 +1,3 @@
+-name cowboy_load_html_partially@127.0.0.1
+-setcookie cowboy_load_html_partially
+-heart
