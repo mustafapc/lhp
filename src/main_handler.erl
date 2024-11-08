@@ -4,7 +4,7 @@
 -export([init/2, recurse/3, info/3]).
 
 init(Req, State) ->
-	Req2 = cowboy_req:stream_reply(200, #{<<"content-type">> => <<"text/plain">>}, Req),
+	Req2 = cowboy_req:stream_reply(200, #{<<"content-type">> => <<"text/html">>}, Req),
 	recurse({["C:/Users/mustafa/Desktop/cowboy_load_html_partially/src"],"hi.html"}, Req2, State),
 	{cowboy_loop, Req2, State}.
 
@@ -12,8 +12,9 @@ info(eof, Req, State) ->
 	cowboy_req:stream_body("", fin, Req),
     {stop, Req, State};
 info({event, Data}, Req, State) ->
-	case file:read(Data, 100) of
-    {ok, C} -> cowboy_req:stream_body(C, nofin, Req),
+	case file:read(Data, 30) of
+    {ok, C} -> timer:sleep(100),
+	cowboy_req:stream_body(C, nofin, Req),
 	info({event, Data}, Req, State);
 	_ -> info(eof, Req, State), 
 		file:close(Data)
